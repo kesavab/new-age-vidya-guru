@@ -493,8 +493,24 @@
             $("#contactForm").trigger("reset");
           } else {
             // The form submission failed
-            formResponse.innerHTML = 'Something went wrong';
+            //formResponse.innerHTML = 'Something went wrong';
             console.error(JSON.parse(response.target.response).message);
+            $("#success").html("<div class='alert alert-danger'>");
+            $("#success > .alert-danger")
+              .html(
+                "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;"
+              )
+              .append("</button>");
+            $("#success > .alert-danger").append(
+              $("<strong>").text(
+                "Sorry " +
+                $("input#name").val() +
+                ", Something went wrong. Please try again later!"
+              )
+            );
+            $("#success > .alert-danger").append("</div>");
+            //clear all fields
+            $("#contactForm").trigger("reset");
           }
         };
       };
