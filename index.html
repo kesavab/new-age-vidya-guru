@@ -34,11 +34,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-              href="#portfolio">Courses offered</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-              href="#about">About</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-              href="#contact">Contact</a></li>
+              href="#contact">Register for demo</a></li>
         </ul>
       </div>
     </div>
@@ -64,192 +60,14 @@
     </div>
   </header>
 
-  <div id="smart-button-container">
-    <div style="text-align: center;">
-      <div style="margin-bottom: 1.25rem;">
-        <p></p>
-        <select id="item-options"><option value="One month" price="25">One month - 25 GBP</option><option value="Three months" price="60">Three months - 60 GBP</option></select>
-        <select style="visibility: hidden" id="quantitySelect"></select>
-      </div>
-    <div id="paypal-button-container"></div>
-    </div>
-  </div>
-  <script src="https://www.paypal.com/sdk/js?client-id=AQNyKL_yYJUDS8XdahixIssDR-9dhWAWLxQ-BlmEQ7TBjwTSuMV8H4dheEkNfQveJOmivdpEfvXvM0ND&currency=GBP" data-sdk-integration-source="button-factory"></script>
-  <script>
-    function initPayPalButton() {
-      var shipping = 0;
-      var itemOptions = document.querySelector("#smart-button-container #item-options");
-  var quantity = parseInt();
-  var quantitySelect = document.querySelector("#smart-button-container #quantitySelect");
-  if (!isNaN(quantity)) {
-    quantitySelect.style.visibility = "visible";
-  }
-  var orderDescription = '';
-  if(orderDescription === '') {
-    orderDescription = 'Item';
-  }
-  paypal.Buttons({
-    style: {
-      shape: 'rect',
-      color: 'gold',
-      layout: 'vertical',
-      label: 'paypal',
-      
-    },
-    createOrder: function(data, actions) {
-      var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
-      var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
-      var tax = (0 === 0) ? 0 : (selectedItemPrice * (parseFloat(0)/100));
-      if(quantitySelect.options.length > 0) {
-        quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value);
-      } else {
-        quantity = 1;
-      }
-
-      tax *= quantity;
-      tax = Math.round(tax * 100) / 100;
-      var priceTotal = quantity * selectedItemPrice + parseFloat(shipping) + tax;
-      priceTotal = Math.round(priceTotal * 100) / 100;
-      var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100;
-
-      return actions.order.create({
-        purchase_units: [{
-          description: orderDescription,
-          amount: {
-            currency_code: 'GBP',
-            value: priceTotal,
-            breakdown: {
-              item_total: {
-                currency_code: 'GBP',
-                value: itemTotalValue,
-              },
-              shipping: {
-                currency_code: 'GBP',
-                value: shipping,
-              },
-              tax_total: {
-                currency_code: 'GBP',
-                value: tax,
-              }
-            }
-          },
-          items: [{
-            name: selectedItemDescription,
-            unit_amount: {
-              currency_code: 'GBP',
-              value: selectedItemPrice,
-            },
-            quantity: quantity
-          }]
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) { 
-        alert('Transaction completed by ' + details.payer.name.given_name + '!');
-      });
-    },
-    onError: function(err) {
-      console.log(err);
-    },
-  }).render('#paypal-button-container');
-}
-initPayPalButton();
-  </script>
-  <!-- Portfolio Section-->
-  <section class="page-section portfolio" id="portfolio">
-    <div class="container">
-      <!-- Portfolio Section Heading-->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Courses offered</h2>
-      <!-- Icon Divider-->
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-      </div>
-      <!-- Portfolio Grid Items-->
-      <div class="row justify-content-center">
-        <!-- Portfolio Item 1-->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="" />
-          </div>
-        </div>
-        <!-- Portfolio Item 2-->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="" />
-          </div>
-        </div>
-        <!-- Portfolio Item 3-->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="" />
-          </div>
-        </div>
-        <!-- Portfolio Item 4-->
-        <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/game.png" alt="" />
-          </div>
-        </div>
-        <!-- Portfolio Item 5-->
-        <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="" />
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- About Section-->
-  <section class="page-section bg-primary text-white mb-0" id="about">
-    <div class="container">
-      <!-- About Section Heading-->
-      <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
-      <!-- Icon Divider-->
-      <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-      </div>
-      <!-- About Section Content-->
-      <div class="row">
-        <div class="col-lg-4 ml-auto">
-          <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the
-            complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy
-            customization.</p>
-        </div>
-        <div class="col-lg-4 mr-auto">
-          <p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and
-            add your email address to the contact form to make it fully functional!</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  
+  
   <!-- Contact Section-->
   <!-- Contact Section Form-->
   <section class="page-section" id="contact">
     <div class="container">
       <!-- Contact Section Heading-->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Register your interest</h2>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Register for demo</h2>
       <!-- Icon Divider-->
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
@@ -286,7 +104,15 @@ initPayPalButton();
                 <p class="help-block text-danger"></p>
               </div>
             </div>
-
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Register for</label>
+                <input name="registerfor" class="form-control" id="registerfor" type="text" placeholder="Register for"
+                required="required" data-validation-required-message="Please enter the class you want to register for" />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+           
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Message</label>
@@ -306,231 +132,17 @@ initPayPalButton();
     </div>
   </section>
 
-  <!-- Footer-->
-  <footer class="footer text-center">
-    <div class="container">
-      <div class="row">
-        <!-- Footer Location-->
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Location</h4>
-          <p class="lead mb-0">
-            2215 John Daniel Drive
-            <br />
-            Clark, MO 65243
-          </p>
-        </div>
-        <!-- Footer Social Icons-->
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Around the Web</h4>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-        </div>
-        <!-- Footer About Text-->
-        <div class="col-lg-4">
-          <h4 class="text-uppercase mb-4">About Freelancer</h4>
-          <p class="lead mb-0">
-            Freelance is a free to use, MIT licensed Bootstrap theme created by
-            <a href="http://startbootstrap.com">Start Bootstrap</a>
-            .
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  
   <!-- Copyright Section-->
   <div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright © Your Website 2020</small></div>
+    <div class="container"><small>Copyright © New Age Vidya guru 2020</small></div>
   </div>
   <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
   <div class="scroll-to-top d-lg-none position-fixed">
     <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i
         class="fa fa-chevron-up"></i></a>
   </div>
-  <!-- Portfolio Modals-->
-  <!-- Portfolio Modal 1-->
-  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"
-    aria-labelledby="portfolioModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title-->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">తెలుగు
-                </h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image-->
-                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="" />
-                <!-- Portfolio Modal - Text-->
-                <p class="mb-5">దేశ భాషలందు తెలుగు లెస్స</p>
-                <p class="mb-5">Telugu will taught by Sangeetha madam, 15 years experince in Telgu teaching, she is a
-                  teacher at DSP</p>
-                <button class="btn btn-primary" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Portfolio Modal 2-->
-  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog"
-    aria-labelledby="portfolioModal2Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title-->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal2Label">हिंदी
-                </h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image-->
-                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="" />
-                <!-- Portfolio Modal - Text-->
-                <p class="mb-5">जल्द आ रहा है!!!</p>
-                <button class="btn btn-primary" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Portfolio Modal 3-->
-  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog"
-    aria-labelledby="portfolioModal3Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title-->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal3Label">தமிழ்
-                </h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image-->
-                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="" />
-                <!-- Portfolio Modal - Text-->
-                <p class="mb-5">விரைவில்!!</p>
-                <button class="btn btn-primary" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Portfolio Modal 4-->
-  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog"
-    aria-labelledby="portfolioModal4Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title-->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal4Label">ಕನ್ನಡ
-                </h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image-->
-                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="" />
-                <!-- Portfolio Modal - Text-->
-                <p class="mb-5">ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ!!</p>
-                <button class="btn btn-primary" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Portfolio Modal 5-->
-  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog"
-    aria-labelledby="portfolioModal5Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title-->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal5Label">മലയാളം
-                </h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image-->
-                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="" />
-                <!-- Portfolio Modal - Text-->
-                <p class="mb-5">ഉടൻ വരുന്നു!!!</p>
-                <button class="btn btn-primary" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
 
 
