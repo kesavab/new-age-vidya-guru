@@ -10238,3 +10238,7 @@ form .row:first-child .floating-label-form-group {
 .copyright {
   background-color: #1a252f;
 }
+
+.masthead-gradient{
+  background-image: linear-gradient(to bottom right,#F9F4EF, #FDF9F4);
+}
