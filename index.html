@@ -110,21 +110,21 @@
               <div class="form-group controls mb-0 pb-2">
                 <label>Registering for</label>
                 <div class="form-row">
-                  <input name="regTelugu" class="form-control col-1" type="checkbox" value="yes" id="regTelugu">
+                  <input name="regFor[]" class="form-control col-1" type="checkbox" id="regTelugu" minchecked="1" data-validation-minchecked-message="Choose one course">
                   <label class="nav-checkbox-label col-11" for="regTelugu">
                     Telugu
                   </label>
                 </div>
                 <div class="form-row">
-                  <input name="regHindi" class="form-control  col-1" type="checkbox" value="yes" id="regHindi">
+                  <input name="regFor[]" class="form-control  col-1" type="checkbox" id="regHindi">
                   <label class="nav-checkbox-label col-11" for="regHindi">
                     Hindi
                   </label>
                 </div>
+                <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="floating-label-form-group"></div>
-
 
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
