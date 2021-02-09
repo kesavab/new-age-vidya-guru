@@ -12,7 +12,14 @@ $(function () {
             var name = $("input#name").val();
             var email = $("input#email").val();
             var phone = $("input#phone").val();
+            var childage = $("input#childage").val();
             var message = $("textarea#message").val();
+            const form = document.querySelector('form');
+            const data = {};
+            const formElements = Array.from(form);
+            formElements.map(input => (data[input.name] = input.value));
+            // Log what our lambda function will receive
+            console.log(JSON.stringify(data));
             var firstName = name; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
             if (firstName.indexOf(" ") >= 0) {
@@ -21,14 +28,11 @@ $(function () {
             $this = $("#sendMessageButton");
             $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
             $.ajax({
-                url: "/assets/mail/contact_me.php",
+                url: "https://3y7hukbus9.execute-api.eu-west-1.amazonaws.com/interestedfolks",
                 type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message,
-                },
+                headers: { 'Accept': 'application/json; charset=utf-8', 'Content-Type': 'application/json; charset=utf-8' },
+                data: JSON.stringify(data),
+
                 cache: false,
                 success: function () {
                     // Success message
@@ -39,7 +43,7 @@ $(function () {
                         )
                         .append("</button>");
                     $("#success > .alert-success").append(
-                        "<strong>Your message has been sent. </strong>"
+                        "<strong>Your registration is successful. Thank you. </strong>"
                     );
                     $("#success > .alert-success").append("</div>");
                     //clear all fields
@@ -56,8 +60,8 @@ $(function () {
                     $("#success > .alert-danger").append(
                         $("<strong>").text(
                             "Sorry " +
-                                firstName +
-                                ", it seems that my mail server is not responding. Please try again later!"
+                            firstName +
+                            ", something went wrong. Please try again later!"
                         )
                     );
                     $("#success > .alert-danger").append("</div>");
