@@ -10239,6 +10239,9 @@ form .row:first-child .floating-label-form-group {
   background-color: #1a252f;
 }
 
+/* New Age Vidya styles */
+
+
 .masthead-gradient{
   background-image: linear-gradient(to bottom right,#F9F4EF, #FDF9F4);
 }
@@ -10272,4 +10275,15 @@ h2 {
 }
 .accordion-section .panel-default .panel-body {
     font-size: 1.0rem;
+}
+
+.nav-checkbox-label {
+  color: #6c757d;
+  opacity: 1;
+  font-size: 1.5em;
+}
+.nav-checkbox-input {
+  font-size: 1.5em;
+  transform: scale(1.5);
+  margin-top: 12px;
 }

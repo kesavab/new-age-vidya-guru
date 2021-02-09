@@ -12,12 +12,21 @@ $(function () {
             var name = $("input#name").val();
             var email = $("input#email").val();
             var phone = $("input#phone").val();
-            var childage = $("input#childage").val();
+            var chilAage = $("input#childage").val();
             var message = $("textarea#message").val();
-            const form = document.querySelector('form');
-            const data = {};
-            const formElements = Array.from(form);
-            formElements.map(input => (data[input.name] = input.value));
+            var regTelugu = $("input#regTelugu")[0].checked;
+            var regHindi = $("input#regHindi")[0].checked;
+            var data = {};
+            data = {
+                name: name,
+                phone: phone,
+                email: email,
+                childage: chilAage,
+                regTelugu: regTelugu,
+                regHindi: regHindi,
+                message: message,
+            }
+            //formElements.map(input => (data[input.name] = input.value));
             // Log what our lambda function will receive
             console.log(JSON.stringify(data));
             var firstName = name; // For Success/Failure Message
