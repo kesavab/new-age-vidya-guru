@@ -94,8 +94,8 @@
           <form id="contactForm" name="sentMessage" novalidate="novalidate">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Name</label>
-                <input name="name" class="form-control" id="name" type="text" placeholder="Name"
+                <label>Parent Name</label>
+                <input name="name" class="form-control" id="name" type="text" placeholder="Parent Name"
                   data-validation-required-message="Please enter your name." required="true" />
                 <p class="help-block text-danger"></p>
               </div>
@@ -117,31 +117,43 @@
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Child Name</label>
+                <input name="childname" class="form-control" id="childname" type="text" placeholder="Child Name"/>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Child Age</label>
                 <input name="childage" class="form-control" id="childage" type="tel" placeholder="Child Age"
                   data-validation-required-message="Please enter your child age." required="true" />
                 <p class="help-block text-danger"></p>
               </div>
             </div>
+      
+
             <div class="control-group">
               <div class="form-group controls mb-0 pb-2">
-                <label>Registering for</label>
-                <div class="form-row">
-                  <input name="regFor[]" class="form-control col-1" type="checkbox" id="regTelugu" minchecked="1" data-validation-minchecked-message="Choose one course">
-                  <label class="nav-checkbox-label col-11" for="regTelugu">
-                    Telugu
-                  </label>
-                </div>
-                <div class="form-row">
-                  <input name="regFor[]" class="form-control  col-1" type="checkbox" id="regHindi">
-                  <label class="nav-checkbox-label col-11" for="regHindi">
-                    Hindi
-                  </label>
-                </div>
+                <fieldset>
+                    Registering for
+                  <div class="form-row">
+                    <input type="checkbox" name="regFor[]" id="telugu-s1" class="form-control col-1" minchecked="1" data-validation-minchecked-message="Choose one course"><label for="telugu-s1" class="nav-checkbox-label col-11" >Telugu Stage 1 - To learn vowels (అచ్చులు) and consonants (హల్లులు), day to day conversations</label>
+                  </div>
+                  <div class="form-row">
+                    <input type="checkbox" name="regFor[]" id="telugu-s2" class="form-control col-1"><label for="telugu-s2" class="nav-checkbox-label col-11" >Telugu Stage 2 - To learn basic reading writing</label>
+                  </div>
+                  <div class="form-row">
+                    <input type="checkbox" name="regFor[]" id="hindi-s1" class="form-control col-1"><label for="hindi-s1" class="nav-checkbox-label col-11" >Hindi Stage 1 - To learn vowels (स्वरों) and consonants (व्यंजन), day to day conversations </label>
+                  </div>
+                  <div class="form-row">
+                    <input type="checkbox" name="regFor[]" id="hindi-s2" class="form-control col-1"><label for="hindi-s2" class="nav-checkbox-label col-11" >Hindi Stage 2 - To learn basic reading writing</label>
+                  </div>
+                </fieldset>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="floating-label-form-group"></div>
+            
 
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
@@ -161,6 +173,7 @@
     </div>
   </section>
 
+  <!-- FAQ Section-->
   <section class="accordion-section clearfix mt-3" aria-label="Question Accordions" id="faq">
     <div class="container">
 

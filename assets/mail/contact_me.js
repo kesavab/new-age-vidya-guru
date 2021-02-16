@@ -12,19 +12,27 @@ $(function () {
             var name = $("input#name").val();
             var email = $("input#email").val();
             var phone = $("input#phone").val();
+            var childname = $("input#childname").val();
             var chilAage = $("input#childage").val();
             var message = $("textarea#message").val();
-            var regTelugu = $("input#regTelugu")[0].checked;
-            var regHindi = $("input#regHindi")[0].checked;
+            var regTeluguS1 = $("input#telugu-s1")[0].checked;
+            var regHindiS1 = $("input#hindi-s1")[0].checked;
+            var regTeluguS2 = $("input#telugu-s1")[0].checked;
+            var regHindiS2 = $("input#hindi-s2")[0].checked;
+            var url = window.location.href;
             var data = {};
             data = {
                 name: name,
                 phone: phone,
                 email: email,
+                childname: childname,
                 childage: chilAage,
-                regTelugu: regTelugu,
-                regHindi: regHindi,
+                regTeluguS1: regTeluguS1,
+                regHindiS1: regHindiS1,
+                regTeluguS2: regTeluguS2,
+                regHindiS2: regHindiS2,
                 message: message,
+                url: url,
             }
             //formElements.map(input => (data[input.name] = input.value));
             // Log what our lambda function will receive
