@@ -15,11 +15,17 @@ $(function () {
             var childname = $("input#childname").val();
             var chilAage = $("input#childage").val();
             var message = $("textarea#message").val();
-            var regTeluguS1 = $("input#telugu-s1")[0].checked;
-            var regHindiS1 = $("input#hindi-s1")[0].checked;
-            var regTeluguS2 = $("input#telugu-s1")[0].checked;
-            var regHindiS2 = $("input#hindi-s2")[0].checked;
+           
             var url = window.location.href;
+
+            //For courses (used during 2021 easter break)
+
+            var interestedCourses = "";  
+            var checkboxes = document.getElementsByName("regFor");
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked)
+                    interestedCourses = interestedCourses+","+checkboxes[i].id
+            }
             var data = {};
             data = {
                 name: name,
@@ -27,12 +33,9 @@ $(function () {
                 email: email,
                 childname: childname,
                 childage: chilAage,
-                regTeluguS1: regTeluguS1,
-                regHindiS1: regHindiS1,
-                regTeluguS2: regTeluguS2,
-                regHindiS2: regHindiS2,
                 message: message,
                 url: url,
+                courses: interestedCourses,
             }
             //formElements.map(input => (data[input.name] = input.value));
             // Log what our lambda function will receive
