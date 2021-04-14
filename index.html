@@ -23,7 +23,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -78,6 +78,8 @@
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -86,7 +88,12 @@
           <div class="carousel-item">
             <img src="assets/img/TeluguFlyer_V2.jpg" class="d-block w-100" alt="...">
           </div>
-          
+          <div class="carousel-item">
+            <img src="assets/img/Tamil_A4.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/img/bollyhopA4.jpg" class="d-block w-100" alt="...">
+          </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -122,8 +129,8 @@
           <form id="contactForm" name="sentMessage" novalidate="novalidate">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Parent Name</label>
-                <input name="name" class="form-control" id="name" type="text" placeholder="Parent Name"
+                <label>Name</label>
+                <input name="name" class="form-control" id="name" type="text" placeholder="Name"
                   data-validation-required-message="Please enter your name." required="true" />
                 <p class="help-block text-danger"></p>
               </div>
@@ -143,21 +150,7 @@
                 <p class="help-block text-danger"></p>
               </div>
             </div>
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Child Name</label>
-                <input name="childname" class="form-control" id="childname" type="text" placeholder="Child Name" />
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Child Age</label>
-                <input name="childage" class="form-control" id="childage" type="tel" placeholder="Child Age"
-                  data-validation-required-message="Please enter your child age." required="true" />
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
+
 
 
             <div class="control-group">
@@ -174,10 +167,6 @@
                       for="Telugu-2021-April" class="nav-checkbox-label col-11">Telugu</label>
                   </div>
                   <div class="form-row">
-                    <input type="checkbox" name="regFor" id="Dance-2021-April" class="form-control col-1"><label
-                      for="Dance-2021-April" class="nav-checkbox-label col-11">BollyHop</label>
-                  </div>
-                  <div class="form-row">
                     <input type="checkbox" name="regFor" id="Kannada-2021-April" class="form-control col-1"><label
                       for="Kannada-2021-April" class="nav-checkbox-label col-11">Kannada</label>
                   </div>
@@ -189,11 +178,30 @@
                     <input type="checkbox" name="regFor" id="Malayalam-2021-April" class="form-control col-1"><label
                       for="Malayalam-2021-April" class="nav-checkbox-label col-11">Malayalam</label>
                   </div>
+                  <div class="form-row">
+                    <input type="checkbox" name="regFor" id="Dance-2021-April" class="form-control col-1"><label
+                      for="Dance-2021-April" class="nav-checkbox-label col-11">BollyHop</label>
+                  </div>
                 </fieldset>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="floating-label-form-group"></div>
+            <div class="control-group" id="childnamediv">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Child Name</label>
+                <input name="childname" class="form-control" id="childname" type="text" placeholder="Child Name" />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group" id="childagediv">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Child Age</label>
+                <input name="childage" class="form-control" id="childage" type="tel" placeholder="Child Age"
+                  data-validation-required-message="Please enter your child age." required="true" />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
 
 
             <div class="control-group">
@@ -208,11 +216,12 @@
               <div class="form-group controls mb-0 pb-2 mt-2">
                 <fieldset>
                   <div class="form-row">
-                    <input type="checkbox" name="invalidCheck" id="invalidCheck" class="form-control col-1" minchecked="1"
-                      data-validation-minchecked-message="You must agree before submitting."><label for="invalidCheck"
-                      class="nav-checkbox-label col-11">Agree to <a href="/privacy.html" class="">terms and conditions</a></label>
+                    <input type="checkbox" name="invalidCheck" id="invalidCheck" class="form-control col-1"
+                      minchecked="1" data-validation-minchecked-message="You must agree before submitting."><label
+                      for="invalidCheck" class="nav-checkbox-label col-11">Agree to <a href="/privacy.html"
+                        class="">terms and conditions</a></label>
                   </div>
-                  
+
                 </fieldset>
                 <p class="help-block text-danger"></p>
               </div>
@@ -653,7 +662,20 @@
   <script src="assets/mail/jqBootstrapValidation.js"></script>
   <script src="assets/mail/contact_me.js"></script>
   <!-- Core theme JS-->
-  <script src="js/scripts.js"></script>
+  <script src="js/scripts.js">
+
+  </script>
+  <script>
+    $("#Dance-2021-April").change(function () {
+      if (this.checked) {
+        $("#childnamediv").hide("fast", "swing");
+        $("#childagediv").hide("fast", "swing");
+      } else {
+        $("#childnamediv").show("fast", "swing");
+        $("#childagediv").show("fast", "swing");
+      }
+    });
+  </script>
 </body>
 
 </html>

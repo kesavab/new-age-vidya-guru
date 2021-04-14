@@ -48,7 +48,7 @@ $(function () {
             $this = $("#sendMessageButton");
             $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
             $.ajax({
-                //url: "https://6ep0lwrymb.execute-api.eu-west-1.amazonaws.com/users", //This is DEV API Gateway URL that invokes dev lambdas
+               // url: "https://6ep0lwrymb.execute-api.eu-west-1.amazonaws.com/users", //This is DEV API Gateway URL that invokes dev lambdas
                 url: "https://3y7hukbus9.execute-api.eu-west-1.amazonaws.com/users", //This is PROD API Gateway URL that invokes prod lambdas
                 type: "POST",
                 headers: { 'Accept': 'application/json; charset=utf-8', 'Content-Type': 'application/json; charset=utf-8' },
